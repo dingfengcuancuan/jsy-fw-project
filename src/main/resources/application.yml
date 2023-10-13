@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ${spring.cloud.nacos.discovery.service}@@${spring.cloud.nacos.discovery.namespace}@@${spring.cloud.nacos.discovery.group}
+  profiles:
+    active: ${PROFILE:dev}
+  cloud:
+    sentinel:
+      transport:
+        dashboard: ${SENTINEL_DASHBOARD_ADDR} #配置Sentinel dashboard地址
+        port: ${SENTINEL_PORT} #数据传输端口
+        clientIp: ${SENTINEL_IP} #配置本机ip，dashboard通过这个ip去拿数据
+      http-method-specify: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /

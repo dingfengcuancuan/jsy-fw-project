@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: ${PROFILE:dev}
+  cloud:
+    nacos:
+      username: ${NACOS_USERNAME:nacos}
+      password: ${NACOS_PASSWORD:nacos}
+      config:
+        enabled: ${NACOS_CONFIG_ENABLED:false}
+        server-addr: ${NACOS_ADDR:localhost:8848}
+        file-extension: ${nacos.file:yml}
+        namespace: ${NACOS_NAMESPACE:dev}
+        group: ${NACOS_GROUP:dev}
+        name: ${SERVICE_NAME}-${spring.profiles.active}
+      discovery:
+        server-addr: ${NACOS_ADDR:localhost:8848}
+        namespace: ${NACOS_NAMESPACE:dev}
+        group: ${NACOS_GROUP:dev}
+        service: ${SERVICE_NAME:fw-test-project}
+        metadata:
+          paas-name: ${SERVICE_NAME:fw-test-project}
+          paas-ns: ${PAAS_NS:nacos}
+          service-type: SpringCloud
